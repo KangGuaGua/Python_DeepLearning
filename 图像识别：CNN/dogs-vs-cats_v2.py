@@ -9,9 +9,9 @@ from keras import optimizers
 from keras.preprocessing import image
 import matplotlib.pyplot as plt
 
-original_dataset_dir = 'D:/PyCharm/Project/DeepLearning/图像识别：CNN/kaggle_original_data'
-# 原始数据集解压目录 的路径
-base_dir = 'D:/PyCharm/Project/DeepLearning/图像识别：CNN/cats_and_dogs_small'
+original_dataset_dir = 'D:/PyCharm/Project/数据集/cats_and_dogs/kaggle_original_data'
+# 原始数据集解压目录的路径
+base_dir = 'D:/PyCharm/Project/Python_DeepLearning/图像识别：CNN/cats_and_dogs_small'
 # 保存较小数据集的目录
 
 # 分别对应划分后的训练、验证、测试目录

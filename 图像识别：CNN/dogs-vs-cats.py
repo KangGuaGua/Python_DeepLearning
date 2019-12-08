@@ -4,9 +4,9 @@
 
 # ******************************数据集处理，划分出训练集、验证集、测试集**************************************
 import os, shutil
-original_dataset_dir = 'D:/PyCharm/Project/DeepLearning/图像识别：CNN/kaggle_original_data'
+original_dataset_dir = 'D:/PyCharm/Project/数据集/cats_and_dogs/kaggle_original_data'
 # 原始数据集解压目录的路径
-base_dir = 'D:/PyCharm/Project/DeepLearning/图像识别：CNN/cats_and_dogs_small'
+base_dir = 'D:/PyCharm/Project/Python_DeepLearning/图像识别：CNN/cats_and_dogs_small'
 # 保存较小数据集的目录
 os.makedirs(base_dir, exist_ok=True)  # 创建文件夹，exist_ok=True表示如果目标已存在就不做任何动作
 

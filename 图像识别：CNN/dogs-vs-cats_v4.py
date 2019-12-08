@@ -1,7 +1,6 @@
 # 使用数据增强的特征提取，扩展conv_base模型，然后在输入数据上端到端地运行模型
 # 本方法计算代价高，只在有GPU的情况下才能尝试运行
 # 模型的行为和层类似，可以向Sequential模型中添加一个模型(比如conv_base)，就像添加一个层一样
-
 from keras.applications import VGG16
 conv_base = VGG16(weights='imagenet',
                   include_top=False,
@@ -10,7 +9,19 @@ conv_base = VGG16(weights='imagenet',
 import os
 import numpy as np
 from keras.preprocessing.image import ImageDataGenerator
-base_dir = 'D:/PyCharm/Project/DeepLearning/图像识别：CNN/cats_and_dogs_small'
+
+'''
+# 查看运行信息
+import tensorflow as tf
+with tf.device('/gpu:0'):
+    a = tf.constant([1,2,3,4,5,6],shape=[2,3],name='a')
+    b = tf.constant([1, 2, 3, 4, 5, 6], shape=[3,2], name='b')
+    c = tf.matmul(a, b)
+    sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))
+    print(sess.run(c))
+'''
+
+base_dir = 'D:/PyCharm/Project/Python_DeepLearning/图像识别：CNN/cats_and_dogs_small'
 train_dir = os.path.join(base_dir, 'train')
 validation_dir = os.path.join(base_dir, 'validation')
 test_dir = os.path.join(base_dir, 'test')
@@ -101,4 +112,27 @@ history = model.fit_generator(
     validation_data = validation_generator,
     validation_steps=50)
 
+# 绘制训练期间的损失曲线和精度曲线
+import matplotlib.pyplot as plt
+
+acc = history.history['acc']
+val_acc = history.history['val_acc']
+loss = history.history['loss']
+val_loss = history.history['val_loss']
+
+epochs = range(1, len(acc) + 1)
+
+plt.plot(epochs, acc, 'bo', label='Training acc')
+plt.plot(epochs, val_acc, 'b', label='Validation acc')
+plt.title('Training and validation accuracy')
+plt.legend()
+
+plt.figure()
+
+plt.plot(epochs, loss, 'bo', label='Training loss')
+plt.plot(epochs, val_loss, 'b', label='Validation loss')
+plt.title('Training and validation loss')
+plt.legend()
+
+plt.show()
 # 此次的结果有96%的精度，和之前相比有很大的提高
