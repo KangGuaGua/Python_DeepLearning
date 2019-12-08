@@ -1,0 +1,4 @@
+dogs-vs-cats.py 使用CNN
+dogs-vs-cats_v2.py 在v1的基础上使用数据增强来生成更多的训练例，防止过拟合
+dogs-vs-cats_v3.py 使用预训练的CNN。仅使用特征提取，未使用数据增强
+dogs-vs-cats_v2.py 使用预训练的CNN，使用数据增强的特征提取。计算代价很高
